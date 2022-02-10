@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+
+    <title>Chuck Norris Jokes</title>
+</head>
+
+<body>
+    <header>
+        <div class="jumbotron jumbotron-fluid text-center">
+            <h1 class="container display-4">Chuck Norris Jokes</h1>
+            {% if category_joke %}
+            <p>{{ category_joke }}</p>
+            {% else %}
+            <p>{{ joke }}</p>
+            {% endif %}
+            <hr>
+            <form action="{% url 'get_joke' %}" method="POST">
+                {% csrf_token %}
+                <!-- ["animal","career","celebrity","dev","explicit","fashion","food","history","money","movie","music","political","religion","science","sport","travel"] -->
+                <select class="form-select classic" aria-label="Default select example" name="categories">
+                    <option value="animal">Animal</option>
+                    <option value="career">Career</option>
+                    <option value="celebrity">Celebrity</option>
+                    <option value="dev">Dev</option>
+                    <option value="explicit">Explicit</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="food">Food</option>
+                    <option value="history">History</option>
+                    <option value="money">Money</option>
+                    <option value="movie">Movie</option>
+                    <option value="music">Music</option>
+                    <option value="political">Political</option>
+                    <option value="religion">Religion</option>
+                    <option value="science">Science</option>
+                    <option value="sport">Sport</option>
+                    <option value="travel">Travel</option>
+                </select>
+                <button class="btn btn-lg btn-danger ml-4" type="submit" value="get_joke" href="">Get Joke</button>
+            </form>
+        </header>
+        </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+
+    </script>
+</body>
+
+</html>
